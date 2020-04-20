@@ -10,8 +10,16 @@ function getListener(event) {
 
 function getQuote(url) {
   fetch(url)
-    .then(response => response.json())
-    .then(data => printQuote(data));
+    .then(response => { 
+      if (!response.ok) {
+        throw new Error(reponse.status);
+      } else {
+        response.json()
+          .then(data => printQuote(data));
+      } 
+    })
+    
+    .catch(err => console.log(err));
 }
 
 function clearResults() {
