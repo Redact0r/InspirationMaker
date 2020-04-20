@@ -4,16 +4,39 @@
 
 function getListener(event) {
   event.preventDefault();
-  url = 'https://api.forismatic.com/api/1.0/?&origin=*&method=getQuote&lang=en&format=json';
+  url = 'https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
   getQuote(url);
 }
 
 function getQuote(url) {
-  fetch(url, {mode: 'no-cors'})
+  fetch(url)
     .then(response => response.json())
-    .then(data => printData(data));
+    .then(data => printQuote(data));
 }
 
-function printData(data) {
-  console.log(data);
+function clearResults() {
+  results = document.getElementById('results');
+  results.innerHTML = '';
+}
+
+function printQuote(data) {
+  const quote = data.quoteText;
+  let html = `<p>${quote}</p>`;
+  const textDiv = document.createElement('div');
+  const results = document.getElementById('results');
+  textDiv.classList.add('quote');
+  clearResults();
+  results.appendChild(textDiv);
+  textDiv.innerHTML = html;
+  printPic();
+
+}
+
+function printPic() {
+  let pic = document.createElement('IMG');
+  let random = Math.random(1, 10);
+  pic.src = `https://picsum.photos/500/500?grayscale&random=${random}`;
+  results = document.getElementById('results');
+  results.appendChild(pic);
+
 }

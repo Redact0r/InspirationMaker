@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <title>Inspiration Generator</title>
+    <meta description="Get inspired.">
 </head>
 <body>
-    <header><h1>Inspiration Generator</h1></header>
+    <header><h1>Get Inspired.</h1></header>
     <main>
         <div class="main-window">
-            <div class="main-form">
-                <form onsubmit="getListener(event)" class="author-input" id="author-form">
-                    <input type="submit" value="Try me!"></button>
-                </form>
+            <div class="results-pic" id="results"></div>
+            <div class="main">
+                <button class="btn" type="button"  onclick="getListener(event)">Inspire me.</button>
             </div>
         </div>
     </main>
