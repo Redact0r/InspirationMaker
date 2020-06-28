@@ -9,7 +9,7 @@ function getListener(event) {
 }
 
 function getQuote(url) {
-  printPic().then(
+  printPic();
   fetch(url)
     .then(response => { 
       if (!response.ok) {
@@ -18,7 +18,7 @@ function getQuote(url) {
         response.json()
           .then(data => printQuote(data));
       } 
-    }))
+    })
     
     .catch(err => console.log(err));
 }
