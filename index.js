@@ -9,8 +9,6 @@ function getListener(event) {
 }
 
 function getQuote(url) {
-  clearResults();
-  printPic();
   fetch(url)
     .then(response => { 
       if (!response.ok) {
@@ -35,8 +33,10 @@ function printQuote(data) {
   const textDiv = document.createElement('div');
   const results = document.getElementById('results');
   textDiv.classList.add('quote');
+  clearResults();
   results.appendChild(textDiv);
   textDiv.innerHTML = html;
+  printPic();
 
 }
 
